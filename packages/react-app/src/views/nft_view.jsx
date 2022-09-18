@@ -3,6 +3,7 @@ import { ethers } from "ethers";
 import React from "react";
 import { Link } from "react-router-dom";
 import Sketch from "react-p5";
+import { Button } from "antd";
 
 /**
  * web3 props can be passed from '../App.jsx' into your local view component for use
@@ -26,10 +27,11 @@ function NftExample() {
     xyz.position(x_grid, y_grid);
     p5.background(0, 0, 0);
 
-    p5.textSize(34);
+    p5.textFont("Courier");
+    p5.textSize(36);
     p5.stroke(255, 90);
     p5.strokeWeight(4);
-    p5.text("eth Bogotá", 165, 368);
+    p5.text("eth Bogotá", 140, 368);
   };
 
   let draw = p5 => {
@@ -85,16 +87,29 @@ function NftExample() {
 
     p5.fill(0, 0, 0, 60);
     p5.noStroke();
-    p5.text("eth Bogotá", 165, 368);
+    p5.textFont("Courier");
+    p5.text("eth Bogotá", 140, 368);
+  };
+
+  let saveToFile = p5 => {
+    // Save the current canvas to file as png
+    p5.saveCanvas(setup.xyz, "packages/react-app/public/myNft", "png");
   };
 
   return (
     <div>
-      <br></br>
       <div>
-        <div className="canvas" style={{ margin: "auto" }}>
-          <Sketch setup={setup} draw={draw} className="canvas" />
+        <br></br>
+        <div>
+          <div className="canvas" style={{ margin: "auto" }}>
+            <Sketch setup={setup} draw={draw} className="canvas" />
+          </div>
         </div>
+      </div>
+      <div>
+        <Button onclick={saveToFile} style={{ marginTop: 420 }}>
+          mint!
+        </Button>
       </div>
     </div>
   );
