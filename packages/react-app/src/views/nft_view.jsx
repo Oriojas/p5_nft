@@ -89,11 +89,11 @@ function NftExample() {
     p5.noStroke();
     p5.textFont("Courier");
     p5.text("eth Bogotá", 140, 368);
-  };
 
-  let saveToFile = p5 => {
-    // Save the current canvas to file as png
-    p5.saveCanvas(setup.xyz, "packages/react-app/public/myNft", "png");
+    if (p5.mouseIsPressed) {
+      p5.save("nftImg.jpg");
+      p5.noLoop();
+    }
   };
 
   return (
@@ -107,7 +107,7 @@ function NftExample() {
         </div>
       </div>
       <div>
-        <Button onclick={saveToFile} style={{ marginTop: 420 }}>
+        <Button type="primary" style={{ marginTop: 420 }}>
           mint!
         </Button>
       </div>
