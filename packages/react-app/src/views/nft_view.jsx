@@ -4,6 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Sketch from "react-p5";
 import { Button } from "antd";
+import { Upload } from "../components";
 
 /**
  * web3 props can be passed from '../App.jsx' into your local view component for use
@@ -91,7 +92,7 @@ function NftExample() {
     p5.text("eth Bogotá", 140, 368);
 
     if (p5.mouseIsPressed) {
-      p5.save("nftImg.jpg");
+      p5.save("Created_NFT.png");
       p5.noLoop();
     }
   };
@@ -106,11 +107,12 @@ function NftExample() {
           </div>
         </div>
       </div>
-      <div>
-        <Button type="primary" style={{ marginTop: 420 }}>
-          mint!
-        </Button>
+      <div style={{ marginTop: 420 }}>
+        <Upload></Upload>
+        <br></br>
+        <Button type="primary">MINT!</Button>
       </div>
+      <br></br>
     </div>
   );
 }
